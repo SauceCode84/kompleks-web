@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import { BluetoothCore } from "@manekinekko/angular-web-bluetooth";
 
+import { TextDecoder } from "text-encoding";
+
 @Injectable()
 export class BatteryLevelService {
 
@@ -77,7 +79,7 @@ export class BatteryLevelService {
       await writeChar.writeValue(data);
       
       let decoder = new TextDecoder("utf-8");
-
+      
       let value = await characteristic.readValue();
       console.log(value);
       
