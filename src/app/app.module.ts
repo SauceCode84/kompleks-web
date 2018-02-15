@@ -5,7 +5,6 @@ import { WebBluetoothModule } from "@manekinekko/angular-web-bluetooth";
 
 import { AppComponent } from "./app.component";
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -15,6 +14,6 @@ import { AppComponent } from "./app.component";
     WebBluetoothModule.forRoot({ enableTracing: true })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
