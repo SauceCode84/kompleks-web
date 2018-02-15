@@ -4,10 +4,12 @@ import { NgModule } from "@angular/core";
 import { WebBluetoothModule } from "@manekinekko/angular-web-bluetooth";
 
 import { AppComponent } from "./app.component";
+import { PostCardComponent } from './post-card/post-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PostCardComponent
   ],
   imports: [
     BrowserModule,
