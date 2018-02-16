@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-$font-palanquin: "Palanquin";
-$font-titillium-web: "Titillium Web";
+$font-pt-sans: "PT Sans";
 
-@mixin font-smoothing($value: antialiased) {
+$font-family: $font-pt-sans;
+
+@import "./assets/skeleton";
+
+/*@mixin font-smoothing($value: antialiased) {
   @if $value == antialiased {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -28,4 +31,4 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   color: #00bfc2;
   font-size: 3rem;
-}
+}*/
