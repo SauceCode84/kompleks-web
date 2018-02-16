@@ -1,10 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
 $font-pt-sans: "PT Sans";
-
 $font-family: $font-pt-sans;
 
+$aqua: #00ced1;
+$blueberry: #2575fc;
+$grape: #6a11cb;
+$darkcloud: #8f959a;
+
+$primary-color: $blueberry;
+$link-color: darken($primary-color, 5%);
+
 @import "./assets/skeleton";
+
+button,
+.button {
+  .far, .fab {
+    padding-right: 0.2rem;
+    font-size: 1.4rem;
+    font-weight: normal;
+  }
+}
 
 /*@mixin font-smoothing($value: antialiased) {
   @if $value == antialiased {
