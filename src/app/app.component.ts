@@ -1,26 +1,23 @@
-import { Component, NgZone, OnInit } from "@angular/core";
-
-import { BatteryLevelService } from "../battery-level.service";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
-  providers: [ BatteryLevelService ]
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
   
-  batteryLevel: string = "--";
-  device: any = {};
+  //batteryLevel: string = "--";
+  //device: any = {};
 
-  constructor(private zone: NgZone, private batteryLevelService: BatteryLevelService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.getDeviceStatus();
-    this.streamValues();
+    //this.getDeviceStatus();
+    //this.streamValues();
   }
 
-  public async getBatteryLevel() {
+  /*public async getBatteryLevel() {
     let value = await this.batteryLevelService.getBatteryLevel();
     this.showBatteryLevel(value);
   }
@@ -49,6 +46,6 @@ export class AppComponent implements OnInit {
       console.log("Reading battery level %d", value);
       this.batteryLevel = "" + value;
     });
-  }
+  }*/
   
 }

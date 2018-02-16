@@ -1,31 +1,33 @@
 import { Component, OnInit } from "@angular/core";
 
 import { BluetoothCore } from "@manekinekko/angular-web-bluetooth";
+import { GateAccessBLEService } from "../../gate-access-ble.service";
 
 @Component({
   selector: "access",
   templateUrl: "./access.component.html",
-  styleUrls: ["./access.component.scss"]
+  styleUrls: ["./access.component.scss"],
+  providers: [ GateAccessBLEService ]
 })
 export class AccessComponent implements OnInit {
 
-  private device: BluetoothDevice;
-
-  constructor(private ble: BluetoothCore) { }
+  constructor(private accessBLEService: GateAccessBLEService) { }
 
   ngOnInit() {
-    
+    console.log("web bluetooth supported: ", this.isSupported);
   }
 
-  get canConnect() {
-    return this.ble.isSupported;
+  get isSupported() {
+    return this.accessBLEService.isWebBluetoothSupported;
   }
 
   async onConnect() {
     try {
-      this.device = await this.ble.discover({
-        acceptAllDevices: true
-      });
+      let connected = await this.accessBLEService.connect();
+
+      if (connected) {
+
+      }
     } catch (err) {
       console.error(err);
     }

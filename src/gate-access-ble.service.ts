@@ -4,14 +4,21 @@ import { BluetoothCore } from "@manekinekko/angular-web-bluetooth";
 import { TextDecoder } from "text-encoding";
 
 @Injectable()
-export class BatteryLevelService {
+export class GateAccessBLEService {
 
   static GATT_GATE_SERVICE = "e0d38f1c-56ca-4b75-9d44-3e4134f7cb0a";
   static GATT_CHARACTERISTIC_EXAMPLE = "e0d38f1c-56ca-4b75-9d44-3e4134f7cb0b";
   static GATT_CHARACTERISTIC_VALIDATE = "e0d38f1c-56ca-4b75-9d44-3e4134f7cb0c";
   static GATT_CHARACTERISTIC_ACCESS = "e0d38f1c-56ca-4b75-9d44-3e4134f7cb0d";
 
+  private device: BluetoothDevice;
+  private gatt: BluetoothRemoteGATTServer;
+
   constructor(private ble: BluetoothCore) { }
+
+  get isWebBluetoothSupported() {
+    return this.ble.isSupported;
+  }
 
   public getDevice() {
     return this.ble.getDevice$();
@@ -38,26 +45,45 @@ export class BatteryLevelService {
     }
   }
 
+  public async connect() {
+    console.log("connect");
+    
+    try {
+      let options = {
+        acceptAllDevices: true,
+        optionalServices: [ GateAccessBLEService.GATT_GATE_SERVICE ]
+      };
+
+      this.device = await this.ble.discover(options);
+      this.gatt = await this.device.gatt.connect();
+
+      return true;
+    } catch (err) {
+      console.error("connect", err);
+      return false;
+    }
+  }
+
   public async getBatteryLevel() {
     console.log("Getting battery service...");
 
     try {
       let options = {
         acceptAllDevices: true,
-        optionalServices: [ BatteryLevelService.GATT_GATE_SERVICE ]
+        optionalServices: [ GateAccessBLEService.GATT_GATE_SERVICE ]
       };
       let device = await this.ble.discover(options);
       let gatt = await device.gatt.connect();
       
-      let primaryService = await gatt.getPrimaryService(BatteryLevelService.GATT_GATE_SERVICE);
+      let primaryService = await gatt.getPrimaryService(GateAccessBLEService.GATT_GATE_SERVICE);
 
       let chars = await primaryService.getCharacteristics();
 
       console.log(chars);
 
-      let characteristic = await primaryService.getCharacteristic(BatteryLevelService.GATT_CHARACTERISTIC_EXAMPLE);
-      let writeChar = await primaryService.getCharacteristic(BatteryLevelService.GATT_CHARACTERISTIC_VALIDATE);
-      let accessChar = await primaryService.getCharacteristic(BatteryLevelService.GATT_CHARACTERISTIC_ACCESS);
+      let characteristic = await primaryService.getCharacteristic(GateAccessBLEService.GATT_CHARACTERISTIC_EXAMPLE);
+      let writeChar = await primaryService.getCharacteristic(GateAccessBLEService.GATT_CHARACTERISTIC_VALIDATE);
+      let accessChar = await primaryService.getCharacteristic(GateAccessBLEService.GATT_CHARACTERISTIC_ACCESS);
       
       console.log(primaryService);
       console.log(characteristic);
