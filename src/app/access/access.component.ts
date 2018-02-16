@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
+import { BluetoothCore } from "@manekinekko/angular-web-bluetooth";
+
 @Component({
   selector: "access",
   templateUrl: "./access.component.html",
@@ -7,9 +9,26 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AccessComponent implements OnInit {
 
-  constructor() { }
+  private device: BluetoothDevice;
+
+  constructor(private ble: BluetoothCore) { }
 
   ngOnInit() {
+    
+  }
+
+  get canConnect() {
+    return this.ble.isSupported;
+  }
+
+  async onConnect() {
+    try {
+      this.device = await this.ble.discover({
+        acceptAllDevices: true
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }
 
 }
