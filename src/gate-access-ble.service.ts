@@ -47,7 +47,7 @@ export class GateAccessBLEService {
 
   public async connect() {
     console.log("connect");
-    
+
     try {
       let options = {
         acceptAllDevices: true,
@@ -57,10 +57,26 @@ export class GateAccessBLEService {
       this.device = await this.ble.discover(options);
       this.gatt = await this.device.gatt.connect();
 
+      this.device.addEventListener("gattserverdisconnected", (event) => {
+        console.log("Bluetooth device disconnected");
+      });
+
       return true;
     } catch (err) {
       console.error("connect", err);
       return false;
+    }
+  }
+
+  public async disconnect() {
+    console.log("disconnect");
+
+    if (!this.device || !this.gatt) {
+      return;
+    }
+
+    if (this.gatt.connected) {
+      this.gatt.disconnect();
     }
   }
 
