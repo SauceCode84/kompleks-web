@@ -17,7 +17,7 @@ button {
   white-space: nowrap;
   background-color: transparent;
   border-radius: $global-radius;
-  border: 1px solid $border-color;
+  border: $button-border-width solid $border-color;
   cursor: pointer;
   box-sizing: border-box;
 
