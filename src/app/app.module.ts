@@ -13,6 +13,7 @@ import { AppComponent } from "./app.component";
 import { PostCardComponent } from "./post-card/post-card.component";
 import { AccessComponent } from "./access/access.component";
 import { DropZoneDirective } from './drop-zone.directive';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { DropZoneDirective } from './drop-zone.directive';
     PostCardComponent,
     AccessComponent,
     
-    DropZoneDirective
+    DropZoneDirective,
+    
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
