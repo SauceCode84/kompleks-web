@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { BluetoothCore } from "@manekinekko/angular-web-bluetooth";
 
 import { TextDecoder } from "text-encoding";
+import { Subject } from "rxjs/Subject";
 
 @Injectable()
 export class GateAccessBLEService {
@@ -14,19 +15,28 @@ export class GateAccessBLEService {
   private device: BluetoothDevice;
   private gatt: BluetoothRemoteGATTServer;
 
+  private gateService: BluetoothRemoteGATTService;
+  private accessChar: BluetoothRemoteGATTCharacteristic;
+
+  private accessSubject: Subject<boolean> = new Subject<boolean>();
+
   constructor(private ble: BluetoothCore) { }
 
   get isWebBluetoothSupported() {
     return this.ble.isSupported;
   }
 
-  public getDevice() {
+  public getDevice$() {
     return this.ble.getDevice$();
   }
 
-  public streamValues() {
+  public streamValues$() {
     return this.ble.streamValues$()
       .map((value: DataView) => value.getUint8(0));
+  }
+
+  public access$() {
+    return this.accessSubject.asObservable();
   }
 
   private async getDescription(characteristic: BluetoothRemoteGATTCharacteristic) {
@@ -61,6 +71,21 @@ export class GateAccessBLEService {
         console.log("Bluetooth device disconnected");
       });
 
+      this.gateService = await this.gatt.getPrimaryService(GateAccessBLEService.GATT_GATE_SERVICE);
+      this.accessChar = await this.gateService.getCharacteristic(GateAccessBLEService.GATT_CHARACTERISTIC_ACCESS);
+
+      await this.accessChar.startNotifications();
+
+      this.accessChar.addEventListener("characteristicvaluechanged", (event) => {
+        let value: DataView = (event.target as any).value;
+        let access = value.getUint8(0) === 1;
+
+        console.log("accessChar characteristicvaluechanged", value);
+        console.log("access", access ? "granted" : "denied");
+
+        this.accessSubject.next(access);
+      });
+
       return true;
     } catch (err) {
       console.error("connect", err);
@@ -78,6 +103,14 @@ export class GateAccessBLEService {
     if (this.gatt.connected) {
       this.gatt.disconnect();
     }
+  }
+
+  public async sendAccessId(id: string) {
+    let primaryService = await this.gatt.getPrimaryService(GateAccessBLEService.GATT_GATE_SERVICE);
+    let writeChar = await primaryService.getCharacteristic(GateAccessBLEService.GATT_CHARACTERISTIC_VALIDATE);
+
+    let data = new Buffer(id);
+    await writeChar.writeValue(data);
   }
 
   public async getBatteryLevel() {
