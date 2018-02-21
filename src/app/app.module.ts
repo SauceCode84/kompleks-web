@@ -12,12 +12,15 @@ import { environment } from "../environments/environment";
 import { AppComponent } from "./app.component";
 import { PostCardComponent } from "./post-card/post-card.component";
 import { AccessComponent } from "./access/access.component";
+import { DropZoneDirective } from './drop-zone.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostCardComponent,
-    AccessComponent
+    AccessComponent,
+    
+    DropZoneDirective
   ],
   imports: [
     BrowserModule,
