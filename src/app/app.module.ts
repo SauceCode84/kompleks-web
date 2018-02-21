@@ -15,10 +15,12 @@ import { AccessComponent } from "./access/access.component";
 import { DropZoneDirective } from "./drop-zone.directive";
 import { FileUploadComponent } from "./file-upload/file-upload.component";
 import { FileSizePipe } from "./file-size.pipe";
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavBarComponent,
     PostCardComponent,
     AccessComponent,
     FileUploadComponent,
