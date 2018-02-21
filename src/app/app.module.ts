@@ -12,18 +12,20 @@ import { environment } from "../environments/environment";
 import { AppComponent } from "./app.component";
 import { PostCardComponent } from "./post-card/post-card.component";
 import { AccessComponent } from "./access/access.component";
-import { DropZoneDirective } from './drop-zone.directive';
-import { FileUploadComponent } from './file-upload/file-upload.component';
+import { DropZoneDirective } from "./drop-zone.directive";
+import { FileUploadComponent } from "./file-upload/file-upload.component";
+import { FileSizePipe } from "./file-size.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
     PostCardComponent,
     AccessComponent,
+    FileUploadComponent,
     
     DropZoneDirective,
     
-    FileUploadComponent
+    FileSizePipe
   ],
   imports: [
     BrowserModule,
