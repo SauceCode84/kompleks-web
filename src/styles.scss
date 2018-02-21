@@ -3,7 +3,9 @@
 $font-pt-sans: "PT Sans";
 $font-family: $font-pt-sans;
 
-$aqua: #00ced1;
+@import "./assets/bulma";
+
+/*$aqua: #00ced1;
 $blueberry: #2575fc;
 $grape: #6a11cb;
 $darkcloud: #8f959a;
@@ -12,11 +14,12 @@ $red: #f44336;
 $green: #4caf50;
 
 $primary-color: $blueberry;
-$link-color: darken($primary-color, 5%);
+$link-color: darken($primary-color, 5%);*/
 
-@import "./assets/skeleton";
 
-button,
+//@import "./assets/skeleton";
+
+/*button,
 .button {
   .far, .fab {
     padding-right: 0.2rem;
