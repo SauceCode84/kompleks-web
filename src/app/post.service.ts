@@ -1,24 +1,6 @@
 import { Injectable } from "@angular/core";
 
-export interface User {
-  firstName: string;
-  lastName: string;
-  avatarUrl: string;
-  unit: string;
-}
-
-export type PostType = "complaint" | "problem";
-
-export type PostStatus = "pending" | "inProgress" | "completed";
-
-export interface Post {
-  type: PostType;
-  status: PostStatus;
-  timestamp: Date;
-  description: string;
-  user: User;
-  commentCount: number;
-}
+import { Post } from "../models/post";
 
 @Injectable()
 export class PostService {
