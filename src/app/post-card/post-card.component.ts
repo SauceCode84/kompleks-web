@@ -18,14 +18,8 @@ export class PostCardComponent implements OnInit {
     this.post = this.postService.getPost();
   }
 
-  getPostType() {
-    switch (this.post.type) {
-      case "complaint":
-        return "Complaint";
-
-      case "problem":
-        return "Problem";
-    }
+  get postType() {
+    return PostService.getPostType(this.post);
   }
 
 }

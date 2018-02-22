@@ -7,6 +7,16 @@ export class PostService {
 
   constructor() { }
 
+  static getPostType(post: Post) {
+    switch (post.type) {
+      case "complaint":
+        return "Complaint";
+
+      case "problem":
+        return "Problem";
+    }
+  }
+
   getPost(): Post {
     return {
       type: "complaint",
