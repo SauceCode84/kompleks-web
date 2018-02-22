@@ -1,11 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
 $font-pt-sans: "PT Sans";
-$font-family: $font-pt-sans;
+$font-pt-sans-caption: "PT Sans Caption";
 
 $family-sans-serif: $font-pt-sans;
 
 @import "./bulma/bulma";
+
+.kompleks-brand-title {
+  font-family: $font-pt-sans-caption;
+  font-variant-caps: small-caps;
+}
 
 /*$aqua: #00ced1;
 $blueberry: #2575fc;
