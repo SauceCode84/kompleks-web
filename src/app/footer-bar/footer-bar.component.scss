@@ -12,9 +12,7 @@
       > a {
         color: findColorInvert($black);
         border-radius: 0;
-        border-bottom: none;
-        border-left: none;
-        border-right: none;
+        border: none;
 
         &:hover {
           color: findColorInvert($background);

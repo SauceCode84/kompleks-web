@@ -7,6 +7,12 @@ $family-sans-serif: $font-pt-sans;
 
 @import "./bulma/bulma";
 
+$footer-bar-height: 40px;
+
+body.has-footer-bar {
+  padding-bottom: $footer-bar-height;
+}
+
 .kompleks-brand-title {
   font-family: $font-pt-sans-caption;
   font-variant-caps: small-caps;
