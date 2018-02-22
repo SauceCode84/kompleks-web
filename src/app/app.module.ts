@@ -9,6 +9,8 @@ import { WebBluetoothModule } from "@manekinekko/angular-web-bluetooth";
 
 import { environment } from "../environments/environment";
 
+import { PostService } from "./post.service";
+
 import { AppComponent } from "./app.component";
 import { PostCardComponent } from "./post-card/post-card.component";
 import { AccessComponent } from "./access/access.component";
@@ -41,7 +43,9 @@ import { FooterBarComponent } from './footer-bar/footer-bar.component';
 
     WebBluetoothModule.forRoot({ enableTracing: true })
   ],
-  providers: [],
+  providers: [
+    PostService
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

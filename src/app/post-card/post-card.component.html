@@ -1,18 +1,7 @@
-<!--<div class="card">
-  <header class="card-header">
-    <p class="card-header-title">
-      Component
-    </p>
-  </header>
-  <div class="card-content">
-
-  </div>
-</div>-->
-
 <div class="card">
   <header class="card-header">
     <p class="card-header-title">
-      Complaint
+      {{ getPostType() }}
     </p>
     <a href="#" class="card-header-icon" aria-label="more options">
       <span class="icon">
@@ -29,34 +18,28 @@
     <div class="media">
       <div class="media-left">
         <figure class="image is-48x48">
-          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+          <img [src]="post.user.avatarUrl" alt="Placeholder image">
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-4">Richard Ueckermann</p>
-        <p class="subtitle is-6">31 Ruby Corner</p>
+        <p class="title is-4">{{ post.user.firstName }} {{ post.user.lastName }}</p>
+        <p class="subtitle is-6">{{ post.user.unit }}</p>
       </div>
       <div class="media-right">
-        <span class="subtitle is-7 has-text-grey">2 hours ago</span>
+        <span class="subtitle is-7 has-text-grey">{{ post.timestamp | date }}</span>
       </div>
     </div>
 
     <div class="content">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum sapiente deserunt tempore iste mollitia! Et accusamus vero dignissimos dolorem quam!
+      {{ post.description }}
     </div>
 
     <footer class="card-footer">
       <a href="#" class="card-footer-item has-text-primary">
         <span class="icon">
-          <i class="far fa-thumbs-up"></i>
-        </span>
-        <span>12</span>
-      </a>
-      <a href="#" class="card-footer-item has-text-dark">
-        <span class="icon">
           <i class="far fa-comments"></i>
         </span>
-        <span>12</span>
+        <span>{{ post.commentCount }}</span>
       </a>
     </footer>
   </div>
