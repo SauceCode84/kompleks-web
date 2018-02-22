@@ -1,0 +1,31 @@
+@import "../../bulma/bulma";
+
+#footer-tabs {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: $black;
+
+  .tabs {
+    li {
+      > a {
+        color: findColorInvert($black);
+        border-radius: 0;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+
+        &:hover {
+          color: findColorInvert($background);
+        }
+      }
+
+      &.is-active {
+        > a:hover {
+          color: findColorInvert($tabs-link-color);
+        }
+      }
+    }
+  }
+}
