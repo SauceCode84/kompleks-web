@@ -8,6 +8,7 @@ export interface Post {
   type: PostType;
   status: PostStatus;
   timestamp: Date;
+  heading: string;
   description: string;
   user: User;
   commentCount: number;
