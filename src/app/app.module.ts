@@ -9,6 +9,8 @@ import { WebBluetoothModule } from "@manekinekko/angular-web-bluetooth";
 
 import { environment } from "../environments/environment";
 
+import { CoreModule } from "./core/core.module";
+
 import { PostService } from "./post.service";
 
 import { AppComponent } from "./app.component";
@@ -41,7 +43,9 @@ import { FooterBarComponent } from './footer-bar/footer-bar.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
 
-    WebBluetoothModule.forRoot({ enableTracing: true })
+    WebBluetoothModule.forRoot({ enableTracing: true }),
+
+    CoreModule
   ],
   providers: [
     PostService
