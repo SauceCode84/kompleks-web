@@ -19,8 +19,9 @@ import { AccessComponent } from "./access/access.component";
 import { DropZoneDirective } from "./drop-zone.directive";
 import { FileUploadComponent } from "./file-upload/file-upload.component";
 import { FileSizePipe } from "./file-size.pipe";
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { FooterBarComponent } from './footer-bar/footer-bar.component';
+import { NavBarComponent } from "./nav-bar/nav-bar.component";
+import { FooterBarComponent } from "./footer-bar/footer-bar.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FooterBarComponent } from './footer-bar/footer-bar.component';
     PostCardComponent,
     AccessComponent,
     FileUploadComponent,
+    UserProfileComponent,
     
     DropZoneDirective,
     
