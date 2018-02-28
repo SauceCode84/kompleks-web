@@ -22,6 +22,7 @@ import { FileSizePipe } from "./file-size.pipe";
 import { NavBarComponent } from "./nav-bar/nav-bar.component";
 import { FooterBarComponent } from "./footer-bar/footer-bar.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { UserProfileComponent } from "./user-profile/user-profile.component";
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     
     // Angular Fire Modules
     AngularFireModule.initializeApp(environment.firebase),
