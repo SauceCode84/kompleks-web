@@ -1,0 +1,15 @@
+@import "../../bulma/bulma";
+
+$google-red: #dd4b39;
+
+.button {
+  &.button-google {
+    background-color: $google-red;
+    border-color: transparent;
+    color: findColorInvert($google-red);
+
+    &:hover, &.is-hovered {
+      background-color: darken($google-red, 2.5%);
+    }
+  }
+}
