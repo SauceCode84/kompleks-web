@@ -7,7 +7,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HomeComponent implements OnInit {
 
+  // has-navbar-fixed-top has-footer-bar
+
   constructor() { }
+
 
   ngOnInit() {
   }
