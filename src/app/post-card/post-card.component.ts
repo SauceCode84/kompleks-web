@@ -15,8 +15,11 @@ export class PostCardComponent implements OnInit {
   constructor(private postService: PostService) { }
 
   ngOnInit() {
-    this.postService.getPost()
-      .subscribe(post => this.post = post);
+    this.postService.getPost("1ziAdnqTPfFXiEskug1N")
+      .subscribe(post => {
+        console.log(post);
+        this.post = post;
+      });
   }
 
   get postType() {

@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 
+import { AngularFirestore, AngularFirestoreCollection } from "angularfire2/firestore";
+
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/observable/of";
 
@@ -8,7 +10,11 @@ import { Post } from "../models/post";
 @Injectable()
 export class PostService {
 
-  constructor() { }
+  private postCollection: AngularFirestoreCollection<Post>;
+
+  constructor(private afs: AngularFirestore) {
+    this.postCollection = this.afs.collection("posts");
+  }
 
   static getPostType(post: Post) {
     if (!post) {
@@ -24,8 +30,10 @@ export class PostService {
     }
   }
 
-  getPost(): Observable<Post> {
-    return Observable.of(<Post>{
+  getPost(id: string): Observable<Post> {
+    return this.afs.doc<Post>("posts/" + id).valueChanges();
+
+    /*return Observable.of(<Post>{
       type: "complaint",
       status: "pending",
       timestamp: new Date(2018, 1, 22),
@@ -38,7 +46,7 @@ export class PostService {
         unit: "31 Ruby Corner"
       },
       commentCount: 5
-    });
+    });*/
   }
 
 }
