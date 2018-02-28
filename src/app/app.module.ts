@@ -23,6 +23,7 @@ import { NavBarComponent } from "./nav-bar/nav-bar.component";
 import { FooterBarComponent } from "./footer-bar/footer-bar.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { AppRoutingModule } from "./app-routing.module";
+import { LoginComponent } from "./login/login.component";
 
 @NgModule({
   declarations: [
@@ -33,10 +34,11 @@ import { AppRoutingModule } from "./app-routing.module";
     AccessComponent,
     FileUploadComponent,
     UserProfileComponent,
+    LoginComponent,
     
     DropZoneDirective,
     
-    FileSizePipe
+    FileSizePipe    
   ],
   imports: [
     BrowserModule,
