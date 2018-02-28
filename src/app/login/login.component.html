@@ -32,11 +32,15 @@
               </div>
             </div>
 
-            <button class="button is-block is-info is-large is-fullwidth">Login</button>
+            <button class="button is-block is-info is-large is-fullwidth" [disabled]="loginButtonStatus == 'disabled'">Login</button>
           </form>
           <hr/>
 
-          <button class="button button-google is-block is-fullwidth" (click)="googleLogin()">
+          <button
+            class="button button-google is-block is-fullwidth"
+            [class.is-loading]="googleButtonStatus == 'loading'"
+            [disabled]="googleButtonStatus == 'disabled'"
+            (click)="googleLogin()">
             <span class="icon"><i class="fab fa-google"></i></span>
             <span>Sign in with Google</span>
           </button>
