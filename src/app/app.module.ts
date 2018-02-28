@@ -24,6 +24,7 @@ import { FooterBarComponent } from "./footer-bar/footer-bar.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from "./login/login.component";
+import { HomeComponent } from "./home/home.component";
 
 @NgModule({
   declarations: [
@@ -34,11 +35,12 @@ import { LoginComponent } from "./login/login.component";
     AccessComponent,
     FileUploadComponent,
     UserProfileComponent,
+    HomeComponent,
     LoginComponent,
     
     DropZoneDirective,
     
-    FileSizePipe    
+    FileSizePipe
   ],
   imports: [
     BrowserModule,
