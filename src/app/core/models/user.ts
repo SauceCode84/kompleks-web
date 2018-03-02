@@ -5,4 +5,6 @@ export interface User {
   photoUrl?: string;
   displayName?: string;
   unit?: string;
+
+  fcmTokens?: { [token: string]: true };
 }

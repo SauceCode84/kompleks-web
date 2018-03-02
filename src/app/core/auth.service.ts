@@ -28,6 +28,11 @@ export class AuthService {
       });
   }
 
+  async emailLogin(email: string, password: string) {
+    let credential = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    
+  }
+
   async googleLogin() {
     let provider = new firebase.auth.GoogleAuthProvider();
     await this.oAuthLogin(provider);
