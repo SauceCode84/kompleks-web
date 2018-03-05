@@ -3,7 +3,7 @@
 $font-pt-sans: "PT Sans";
 $font-pt-sans-caption: "PT Sans Caption";
 
-$family-sans-serif: $font-pt-sans;
+$family-sans-serif: $font-pt-sans !important;
 
 @import "./bulma/bulma";
 

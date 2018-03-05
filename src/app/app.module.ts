@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
@@ -25,6 +26,7 @@ import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
+import { SignupComponent } from "./signup/signup.component";
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { HomeComponent } from "./home/home.component";
     UserProfileComponent,
     HomeComponent,
     LoginComponent,
+    SignupComponent,
     
     DropZoneDirective,
     
@@ -44,6 +47,8 @@ import { HomeComponent } from "./home/home.component";
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+
     AppRoutingModule,
     
     // Angular Fire Modules

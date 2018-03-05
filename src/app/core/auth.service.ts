@@ -9,6 +9,7 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/switchMap";
 
 import { User } from "./models/user";
+import { UserCredential } from "@firebase/auth-types";
 
 @Injectable()
 export class AuthService {
@@ -28,6 +29,16 @@ export class AuthService {
       });
   }
 
+  async emailSignUp(email: string, password: string) {
+    try {
+      let credential: UserCredential = await this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, password);
+      console.log(credential);
+      await this.updateUserData(credential.user);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   async emailLogin(email: string, password: string) {
     let credential = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
     
@@ -39,7 +50,7 @@ export class AuthService {
   }
 
   private async oAuthLogin(provider) {
-    let credential = await this.afAuth.auth.signInWithPopup(provider);
+    let credential: UserCredential = await this.afAuth.auth.signInWithPopup(provider);
     await this.updateUserData(credential.user);
   }
 

@@ -1,0 +1,23 @@
+@import "../../bulma/bulma";
+
+.hero {
+  &.is-success {
+    background: #f2f6fa;
+
+    &.nav {
+      box-shadow: none;
+    }
+  }
+
+  &.nav {
+    box-shadow: none;
+  }
+}
+
+.signup-button {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  font-family: "PT Sans Caption" !important;
+  font-weight: 700;
+}
