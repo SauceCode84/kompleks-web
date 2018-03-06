@@ -9,15 +9,23 @@
           <form [formGroup]="signupForm" novalidate>
             
             <div class="field">
-              <div class="control has-icons-left">
+              <div class="control has-icons-left has-icons-right">
                 <input
                   type="email"
                   class="input"
+                  [class.is-success]="email.valid"
+                  [class.is-danger]="email.invalid && email.dirty && email.touched"
                   placeholder="Email"
                   autofocus=""
                   formControlName="email">
                 <span class="icon is-small is-left">
                   <i class="fas fa-envelope"></i>
+                </span>
+                <span *ngIf="email.valid" class="icon is-small is-right">
+                  <i class="fas fa-check"></i>
+                </span>
+                <span *ngIf="email.invalid && email.touched" class="icon is-small is-right">
+                  <i class="fas fa-times"></i>
                 </span>
               </div>
             </div>
@@ -47,7 +55,10 @@
               </div>
             </div>
 
-            <button class="button signup-button is-block is-info is-fullwidth" [disabled]="" (click)="signUp()">Sign Up</button>
+            <button
+              class="button signup-button is-block is-info is-fullwidth"
+              [disabled]="!signupForm.valid"
+              (click)="signUp()">Sign Up</button>
           </form>
         </div>
       </div>
