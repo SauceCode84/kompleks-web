@@ -29,7 +29,8 @@ export class SignupComponent implements OnInit {
       email: ["",
         [ Validators.required, Validators.email ],
         CustomValidators.userEmailUnique(this.afs)],
-      password: []
+      password: ["", Validators.required],
+      confirmPassword: ["", [ Validators.required, CustomValidators.matchPassword("password") ]]
     });
   }
 
@@ -39,6 +40,22 @@ export class SignupComponent implements OnInit {
 
   get password(): FormControl {
     return this.signupForm.get("password") as FormControl;
+  }
+
+  /*get isPasswordValid() {
+    if (this.password.invalid) {
+      return false;
+    }
+
+    if (!this.confirmPassword.errors) {
+      return true;
+    }
+
+    return this.password.touched && this.confirmPassword.errors.matchPassword;
+  }*/
+
+  get confirmPassword(): FormControl {
+    return this.signupForm.get("confirmPassword") as FormControl;
   }
 
   async signUp() {

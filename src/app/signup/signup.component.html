@@ -48,11 +48,14 @@
                 <input
                   type="password"
                   class="input"
-                  placeholder="Confirm Password">
+                  [class.is-danger]="confirmPassword.dirty && confirmPassword.errors?.matchPassword"
+                  placeholder="Confirm Password"
+                  formControlName="confirmPassword">
                 <span class="icon is-small is-left">
                   <i class="fas fa-key"></i>
                 </span>
               </div>
+              <p *ngIf="confirmPassword.touched && confirmPassword.errors?.matchPassword" class="help is-danger">Passwords do not match</p>
             </div>
 
             <button

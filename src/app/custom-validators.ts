@@ -1,4 +1,4 @@
-import { AbstractControl } from "@angular/forms";
+import { AbstractControl, FormControl } from "@angular/forms";
 
 import { AngularFirestore } from "angularfire2/firestore";
 
@@ -17,6 +17,40 @@ export class CustomValidators {
           take(1),
           map(users => users.length ? { emailUnique: false } : null)
         );
+    }
+  }
+
+  static matchPassword(otherPasswordControl: string) {
+    let thisControl: FormControl;
+    let otherControl: FormControl;
+
+    return (control: FormControl) => {
+      if (!control.parent) {
+        return null;
+      }
+
+      if (!thisControl) {
+        thisControl = control;
+        otherControl = control.parent.get(otherPasswordControl) as FormControl;
+
+        if (!otherControl) {
+          throw new Error(`Other control '${otherPasswordControl}' is not found in parent group`);
+        }
+
+        otherControl.valueChanges.subscribe(() => {
+          thisControl.updateValueAndValidity();
+        });
+      }
+
+      if (!otherControl) {
+        return null;
+      }
+
+      if (thisControl.value !== otherControl.value) {
+        return { matchPassword: true };
+      }
+
+      return null;
     }
   }
 
