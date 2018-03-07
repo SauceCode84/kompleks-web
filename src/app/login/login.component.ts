@@ -19,6 +19,8 @@ export class LoginComponent {
   googleButtonStatus: ButtonStatus;
 
   constructor(private auth: AuthService, private router: Router) {
+    this.loginForm = new FormGroup({});
+
     this.enableAllButtons();
   }
 
