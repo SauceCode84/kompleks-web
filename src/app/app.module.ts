@@ -26,7 +26,6 @@ import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
-import { SignupComponent } from "./signup/signup.component";
 
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import { SignupComponent } from "./signup/signup.component";
     UserProfileComponent,
     HomeComponent,
     LoginComponent,
-    SignupComponent,
     
     DropZoneDirective,
     
