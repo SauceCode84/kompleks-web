@@ -15,6 +15,7 @@ import { CoreModule } from "./core/core.module";
 import { PostService } from "./post.service";
 
 import { AppComponent } from "./app.component";
+import { CreatePostComponent } from "./create-post/create-post.component";
 import { PostCardComponent } from "./post-card/post-card.component";
 import { AccessComponent } from "./access/access.component";
 import { DropZoneDirective } from "./drop-zone.directive";
@@ -32,6 +33,7 @@ import { HomeComponent } from "./home/home.component";
     AppComponent,
     NavBarComponent,
     FooterBarComponent,
+    CreatePostComponent,
     PostCardComponent,
     AccessComponent,
     FileUploadComponent,
