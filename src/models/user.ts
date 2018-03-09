@@ -1,7 +1,6 @@
 
 export interface User {
-  firstName: string;
-  lastName: string;
+  displayName: string;
   avatarUrl: string;
   unit: string;
 }

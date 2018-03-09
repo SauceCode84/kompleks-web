@@ -6,7 +6,7 @@ import * as firebase from "firebase";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/observable/of";
 
-import { Post } from "../models/post";
+import { Post, PostType } from "../models/post";
 import { User } from "./core/models/user";
 
 const getServerTimestamp = () => firebase.firestore.FieldValue.serverTimestamp();
@@ -53,17 +53,15 @@ export class PostService {
     });*/
   }
 
-  createPost(newPost: { heading: string, description: string }, user: User) {
+  createPost(newPost: { heading: string, description: string, type: PostType }, user: User) {
     const timestamp = getServerTimestamp();
     
     return this.postCollection.add({
       ...newPost,
       timestamp,
-      type: "problem",
       status: "pending",
       user: {
-        firstName: user.displayName,
-        lastName: user.displayName,
+        displayName: user.displayName,
         avatarUrl: user.photoUrl,
         unit: ""
       }

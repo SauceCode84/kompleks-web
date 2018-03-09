@@ -24,7 +24,8 @@ export class CreatePostComponent implements OnInit {
 
     this.createPostForm = this.fb.group({
       heading: [""],
-      description: [""]
+      description: [""],
+      type: [""]
     });
   }
 
