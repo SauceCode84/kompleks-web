@@ -1,11 +1,15 @@
 import { Injectable } from "@angular/core";
 
 import { AngularFirestore, AngularFirestoreCollection } from "angularfire2/firestore";
+import * as firebase from "firebase";
 
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/observable/of";
 
 import { Post } from "../models/post";
+import { User } from "./core/models/user";
+
+const getServerTimestamp = () => firebase.firestore.FieldValue.serverTimestamp();
 
 @Injectable()
 export class PostService {
@@ -47,6 +51,23 @@ export class PostService {
       },
       commentCount: 5
     });*/
+  }
+
+  createPost(newPost: { heading: string, description: string }, user: User) {
+    const timestamp = getServerTimestamp();
+    
+    return this.postCollection.add({
+      ...newPost,
+      timestamp,
+      type: "problem",
+      status: "pending",
+      user: {
+        firstName: user.displayName,
+        lastName: user.displayName,
+        avatarUrl: user.photoUrl,
+        unit: ""
+      }
+    });
   }
 
 }

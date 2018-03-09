@@ -1,3 +1,41 @@
-<p>
-  create-post works!
-</p>
+<div class="container has-text-centered">
+  <div class="column is-4 is-offset-4">
+    <h3 class="title has-text-grey">Create Post</h3>
+
+    <div class="box">
+      <form [formGroup]="createPostForm">
+        <div class="field">
+          <div class="control">
+            <input class="input" type="text" placeholder="Title" formControlName="heading">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <textarea class="textarea" placeholder="What seems to be the trouble?" formControlName="description"></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <select>
+                <option>Select dropdown</option>
+                <option>With options</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-primary" (click)="submitPost()">Post</button>
+          </div>
+          <div class="control">
+            <button class="button is-white">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

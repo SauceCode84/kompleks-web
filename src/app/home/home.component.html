@@ -1,7 +1,11 @@
 <nav-bar></nav-bar>
 
 <div class="container">
-  <user-profile></user-profile>
+  <!--<user-profile></user-profile>-->
+
+  <a [routerLink]="['create-post']" class="button">Create</a>
+
+  <router-outlet></router-outlet>
 
   <!--<post-card></post-card>-->
   
