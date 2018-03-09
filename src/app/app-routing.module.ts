@@ -6,6 +6,7 @@ import { AuthGuard } from "./core/auth.guard";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
 import { CreatePostComponent } from "./create-post/create-post.component";
+import { PostFeedComponent } from "./post-feed/post-feed.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: "create-post",
         component: CreatePostComponent
+      },
+      {
+        path: "posts",
+        component: PostFeedComponent
       }
     ]
   },

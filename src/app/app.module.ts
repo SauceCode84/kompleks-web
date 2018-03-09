@@ -27,7 +27,8 @@ import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
-import { ScrollableDirective } from './scrollable.directive';
+import { ScrollableDirective } from "./scrollable.directive";
+import { PostFeedComponent } from "./post-feed/post-feed.component";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ScrollableDirective } from './scrollable.directive';
     NavBarComponent,
     FooterBarComponent,
     CreatePostComponent,
+    PostFeedComponent,
     PostCardComponent,
     AccessComponent,
     FileUploadComponent,
