@@ -15,12 +15,17 @@ const routes: Routes = [
     canActivate: [ AuthGuard ],
     children: [
       {
-        path: "create-post",
-        component: CreatePostComponent
+        path: "",
+        redirectTo: "posts",
+        pathMatch: "full"
       },
       {
         path: "posts",
         component: PostFeedComponent
+      },
+      {
+        path: "create-post",
+        component: CreatePostComponent
       }
     ]
   },

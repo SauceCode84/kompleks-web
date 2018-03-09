@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 import { Post } from "../../models/post";
 import { PostService } from "../post.service";
@@ -10,16 +10,12 @@ import { PostService } from "../post.service";
 })
 export class PostCardComponent implements OnInit {
 
+  @Input("post")
   post: Post;
 
   constructor(private postService: PostService) { }
 
   ngOnInit() {
-    this.postService.getPost("1ziAdnqTPfFXiEskug1N")
-      .subscribe(post => {
-        console.log(post);
-        this.post = post;
-      });
   }
 
   get postType() {
