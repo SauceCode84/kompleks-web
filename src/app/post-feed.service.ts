@@ -57,6 +57,29 @@ export class PostFeedService {
       });
   }
 
+  public loadMore() {
+    const cursor = this.getCursor();
+
+    const more = this.afs.collection(this.query.path, ref => {
+      return ref
+        .orderBy(this.query.field, this.query.reverse ? "desc" : "asc")
+        .limit(this.query.limit)
+        .startAfter(cursor);
+    });
+
+    this.mapAndUpdate(more);
+  }
+
+  private getCursor() {
+    const current = this._data.value;
+
+    if (current.length) {
+      return this.query.prepend ? current[0].doc : current[current.length - 1].doc;
+    }
+
+    return null;
+  }
+
   private mapAndUpdate(col: AngularFirestoreCollection<any>) {
     if (this._done.value || this._loading.value) {
       return;

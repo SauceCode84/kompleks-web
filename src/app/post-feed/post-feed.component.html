@@ -1,3 +1,9 @@
-<div class="content" scrollable (scrollPosition)="scrollHandler($event)">
+<div>
   <post-card *ngFor="let post of postFeed.data | async" [post]="post"></post-card>
+
+  <p *ngIf="postFeed.done | async">All done!</p>
+  
+  <div *ngIf="postFeed.loading | async" class="has-text-centered">
+    <i class="fas fa-3x fa-spinner fa-spin"></i>
+  </div>
 </div>
