@@ -12,6 +12,7 @@ import { environment } from "../environments/environment";
 
 import { CoreModule } from "./core/core.module";
 
+import { WINDOW_PROVIDERS } from "./window.service";
 import { PostService } from "./post.service";
 import { PostFeedService } from "./post-feed.service";
 
@@ -67,7 +68,8 @@ import { PostFeedComponent } from "./post-feed/post-feed.component";
   ],
   providers: [
     PostService,
-    PostFeedService
+    PostFeedService,
+    WINDOW_PROVIDERS
   ],
   bootstrap: [ AppComponent ]
 })
